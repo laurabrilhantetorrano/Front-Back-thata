@@ -204,18 +204,20 @@ export async function listarUsuarios(token) {
 //
 export async function editarPerfil(token, nome, email) {
   const resposta = await fetch(`${API_URL}/api/usuarios/editar`, {
-  method: "PUT",
-  headers: {
-"Content-Type": "application/json",
-Authorization: `Bearer ${token}`,
-},
-body: JSON.stringify({ nome, email }),
-});
-const dados = await resposta.json();
-if (!resposta.ok) {
-throw new Error(dados.mensagem || "Não foi possível salvar.");
-}
- return dados;
+    method: "PUT",
+    headers: { 
+      "Content-Type": "application/json", 
+      Authorization: `Bearer ${token}`, 
+    },
+    body: JSON.stringify({ nome, email }),
+  });
+
+    const dados = await resposta.json();
+  
+    if (!resposta.ok) {
+      throw new Error(dados.mensagem || "Não foi possível salvar.");
+  }
+   return dados;
 }
 
 // ╔═════════════════════════════════════════════════════════════════════╗
